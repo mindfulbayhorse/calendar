@@ -71,7 +71,6 @@ let Calendar = class {
       if (dayValid){
         
         //find the day of the week
-        
         let dayCalendar = new dayMonth(day);
         
         this.monthCalendar.push(dayCalendar);
@@ -131,22 +130,22 @@ let Calendar = class {
     
     this.monthCalendar.forEach((day, ind)=>{
       
-      if (day.dayWeek!==1 && ind===0){
-        for (let i=1; i<this.#numberWeekdays-day.dayWeek; i++){
+      if (day.dayWeek!==0 && ind===0){
+        for (let i=0; i<day.dayWeek; i++){
           let weekday = document.createElement('td');
           week.appendChild(weekday);
         }
         firstWeek = false;
       }
       
-      let weekday = document.createElement('td');
-      weekday.textContent = day.dayNumber;
-      week.appendChild(weekday);
-      
       if (day.dayWeek===0) {
         tbody.appendChild(week);
         week = document.createElement('tr');
       }
+      
+      let weekday = document.createElement('td');
+      weekday.textContent = day.dayNumber;
+      week.appendChild(weekday);
              
     });
     
